@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@prisma/client": "^6.5.0",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "fastify-plugin": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.11",
+    "prisma": "^6.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }, 
+  "scripts": {
+    "dev": "npx ts-node server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  }
+}
