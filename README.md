@@ -1,9 +1,11 @@
 # SCdemo
-##  **Teck stack**
-Fastify
+##  **Tech stack**
+Typescript  
+postgresql  
+Fastify  
 Prisma
 
-## 📌 Project Setup & Installation
+## Project Setup & Installation
 
 ### 1️⃣ **Clone the Repository**
 ```sh
