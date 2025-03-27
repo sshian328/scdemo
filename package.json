@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@fastify/swagger": "^9.4.2",
+    "@fastify/swagger-ui": "^5.2.2",
     "@prisma/client": "^6.5.0",
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
@@ -10,10 +12,14 @@
     "prisma": "^6.5.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
-  }, 
+  },
   "scripts": {
     "dev": "npx ts-node server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "reset": "ts-node prisma/reset.ts && ts-node prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

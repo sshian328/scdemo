@@ -14,8 +14,43 @@ datasource db {
 }
 
 model Device {
-  id      String    @id @default(uuid())
-  name    String    @unique      
-  price   Decimal
-  weight  Decimal
+  id          String      @id @default(uuid())
+  name        String      @unique
+  price       Decimal
+  weight      Decimal
+  inventories Inventory[]
+}
+
+model Inventory {
+  id          String  @id @default(uuid())
+  location    String
+  coordinateX Decimal
+  coordinateY Decimal
+  stock       Int
+  deviceId    String
+  device      Device  @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id           String  @id @default(uuid())
+  deviceCount  Int
+  coordinateX  Decimal
+  coordinateY  Decimal
+  price        Decimal @db.Decimal(10, 2)  // total before discount/shipping
+  discount     Decimal @db.Decimal(10, 2)  // discount amount
+  shippingCost Decimal @db.Decimal(10, 2)  
+  finalTotal   Decimal @db.Decimal(10, 2)  // price - discount + shipping
+  validity     Boolean
+  reason       String?
+  orderItems   OrderItem[]
+}
+
+model OrderItem {
+  id          String  @id @default(uuid())
+  inventoryId String
+  orderId     String
+  quantity    Int
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  inventory   Inventory @relation(fields: [inventoryId], references: [id], onDelete: Cascade)
 }

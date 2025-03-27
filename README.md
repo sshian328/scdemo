@@ -1,9 +1,10 @@
 # SCdemo
 ##  **Tech stack**
-Typescript  
-postgresql  
-Fastify  
-Prisma
+- **TypeScript** – Strongly typed language for scalable
+- **PostgreSQL** – Relational database
+- **Fastify** – High-performance, Unopinionated Node.js framework
+- **Prisma** – Modern ORM for database modeling
+- **Swagger** – Auto-generated API documentation
 
 ## Project Setup & Installation
 
@@ -28,6 +29,7 @@ DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/YOUR_DB"
 ```sh
 npx prisma migrate dev --name init
 npx prisma generate
+npx prisma db seed
 ```
 
 ### 5️⃣ **Start the Server**
@@ -45,22 +47,38 @@ npm run start
 ## 📂 **Project Structure**
 ```
 SCDEMO2025/
-│── prisma/                 # Prisma database configuration
-│   ├── migrations/         # Database migrations
-│   ├── schema.prisma       # Prisma schema
-│── routes/                 # API route handlers
-│   ├── verify.ts           # Example API route
-│── .env                    # Environment variables
-│── server.ts               # Fastify server setup
-│── tsconfig.json           # TypeScript configuration
-│── package.json            # Project dependencies
-│── .gitignore              # Files to ignore in Git
+│── prisma/                     # Prisma database configuration
+│   ├── migrations/             # Database migrations
+│   ├── schema.prisma           # Prisma schema
+│── modules/                
+│   ├── order                   # Order module - handles all order-related logic
+│   │   ├── orderRoutes.ts      # Defines Fastify routes
+│   │   ├── orderControllers.ts # Handles request/response logic
+│   │   ├── orderService.ts     # Contains core business logic
+│   │   ├── orderModel.ts       # Data access layer using Prisma
+│   ├── inventory 
+│   ├── device 
+│── .env                        # Environment variables
+│── server.ts                   # Fastify server setup
+│── tsconfig.json               # TypeScript configuration
+│── package.json                # Project dependencies
+│── .gitignore                  # Files to ignore in Git
 ```
 
-## 🛠 **Available Commands**
+## **Available Commands**
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start the development server |
 | `npm run build` | Build the project for production |
 | `npx prisma studio` | Open Prisma database UI |
 | `npx prisma migrate dev --name init` | Run database migrations |
+| `npm run reset` | Reset database |
+
+## **Future Enhancement**
+- Support multiple device
+- Inventory API for visibility
+- Add user roles (e.g., admin, sales rep) to control access to order/inventory APIs.
+- Add pagination and filtering for order API
+- Integrate Splunk or New Relic for monitoring
+- Allow users to type in a location instead of coordinates** *(frontend task)*
+- More test coverage 
