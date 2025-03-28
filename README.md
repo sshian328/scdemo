@@ -37,6 +37,7 @@ npx prisma db seed
 npm run dev
 ```
 _Server will run on `http://localhost:3000`._
+_API doc on `http://localhost:3000/docs`._
 
 ### 6️⃣ **Start the Server on Production**
 ```sh
@@ -57,7 +58,12 @@ SCDEMO2025/
 │   │   ├── orderService.ts     # Contains core business logic
 │   │   ├── orderModel.ts       # Data access layer using Prisma
 │   ├── inventory 
+│   │   ├── inventoryModel.ts       
 │   ├── device 
+│   │   ├── deviceModel.ts      
+│── config/                
+│   ├── swagger.ts  
+│   ├── constants.ts     
 │── .env                        # Environment variables
 │── server.ts                   # Fastify server setup
 │── tsconfig.json               # TypeScript configuration

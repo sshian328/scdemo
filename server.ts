@@ -1,7 +1,6 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
-import { verifyRoutes } from "./routes/verify";
 import { orderRoutes } from "./modules/order/orderRoutes";
 import { setupSwagger } from './config/swagger';
 
@@ -11,7 +10,6 @@ const fastify = Fastify({logger: true});
 const prisma = new PrismaClient();
 
 setupSwagger(fastify);
-fastify.register(verifyRoutes);
 fastify.register(orderRoutes);
 
 fastify.get("/health", async (_,reply) => {  
