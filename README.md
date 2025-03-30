@@ -79,12 +79,22 @@ SCDEMO2025/
 | `npx prisma studio` | Open Prisma database UI |
 | `npx prisma migrate dev --name init` | Run database migrations |
 | `npm run reset` | Reset database |
+| `npm run test` | Run unit test |
 
 ## **Future Enhancement**
 - Support multiple device
 - Inventory API for visibility
+- Support cancel order API
 - Add user roles (e.g., admin, sales rep) to control access to order/inventory APIs.
-- Add pagination and filtering for order API
+- Add pagination and filtering for get order API
+- Timestamp and sorting for get order API
 - Integrate Splunk or New Relic for monitoring
 - Allow users to type in a location instead of coordinates** *(frontend task)*
 - More test coverage 
+- CI/CD pipeline to cloud: Docker + AWS ECS Fargate + AWS RDS + Github Actions + Route53
+- Secure API, JWT, HTTPS
+
+## **Design trade-off**
+- Device table lookup vs hard coded
+- Code structure, layered structure(routes/conroller/model) vs modular structure
+- Save invalid order
